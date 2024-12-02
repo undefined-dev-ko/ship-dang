@@ -1,16 +1,19 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { Montserrat, Noto_Sans_KR } from 'next/font/google';
 import './globals.css';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
+const notoSansKR = Noto_Sans_KR({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-noto-sans-kr',
 });
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '600'],
+  variable: '--font-montserrat',
 });
 
 export const metadata: Metadata = {
@@ -24,8 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+    <html lang="ko" className={`${notoSansKR.variable} ${montserrat.variable} h-full`}>
+      <body
+        className={`${notoSansKR.className} ${montserrat.className} h-full bg-neutral-900 text-white antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
