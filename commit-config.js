@@ -29,27 +29,41 @@ module.exports = {
       },
       {
         type: 'confirm',
+        name: 'isPrefix',
+        message: '3️⃣ 접두사를 사용할까요?',
+        default: false,
+      },
+      {
+        type: 'input',
+        name: 'prefix',
+        when: (answers) => answers.isPrefix,
+        message: '4️⃣ 접두사를 입력하세요:',
+        validate: (input) => /^\w+$/.test(input),
+      },
+      {
+        type: 'confirm',
         name: 'isTicketNumber',
-        message: '3️⃣ 이슈 티켓이 있나요?',
+        message: '5️⃣ 이슈 티켓이 있나요?',
         default: false,
       },
       {
         type: 'input',
         name: 'ticketNumber',
         when: (answers) => answers.isTicketNumber,
-        message: '4️⃣ 이슈 번호를 입력하세요 (숫자만):',
+        message: '6️⃣ 이슈 번호를 입력하세요:',
         validate: (input) => /^\d+$/.test(input),
       },
     ];
 
     cz.prompt(questions).then((answers) => {
-      const { type, subject, ticketNumber } = answers;
+      const { type, subject, ticketNumber, isPrefix, prefix, isTicketNumber } = answers;
 
       const message = (() => {
-        if (ticketNumber) {
-          return `${type}: ${subject} (#${ticketNumber})`;
+        if (isTicketNumber) {
+          return `${type}${isPrefix ? `(${prefix})` : ''}: ${subject} (#${ticketNumber})`;
         }
-        return `${type}: ${subject}`;
+
+        return `${type}${isPrefix ? `(${prefix})` : ''}: ${subject}`;
       })();
 
       const divider = '='.repeat(50);
