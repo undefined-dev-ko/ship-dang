@@ -1,4 +1,7 @@
 {
   "editor.codeActionsOnSave": { "source.fixAll": "always" },
-  "editor.formatOnSave": false
+  "editor.formatOnSave": false,
+  "eslint.options": {
+    "overrideConfigFile": ".eslintrc.json"
+  }
 }
