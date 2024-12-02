@@ -37,14 +37,20 @@ module.exports = {
         type: 'input',
         name: 'ticketNumber',
         when: (answers) => answers.isTicketNumber,
-        message: '3️⃣ 이슈 번호를 입력하세요 (숫자만):',
+        message: '4️⃣ 이슈 번호를 입력하세요 (숫자만):',
         validate: (input) => /^\d+$/.test(input),
       },
     ];
 
     cz.prompt(questions).then((answers) => {
-      const { type, subject } = answers;
-      const message = `${type}: ${subject}`;
+      const { type, subject, ticketNumber } = answers;
+
+      const message = (() => {
+        if (ticketNumber) {
+          return `${type}: ${subject} (#${ticketNumber})`;
+        }
+        return `${type}: ${subject}`;
+      })();
 
       const divider = '='.repeat(50);
       const decoratedMessage = `
