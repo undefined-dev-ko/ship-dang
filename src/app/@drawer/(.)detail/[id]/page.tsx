@@ -4,7 +4,7 @@ export default function DetailDrawer() {
   return (
     <>
       <DrawerHeader>
-        <DrawerTitle className="text-2xl font-bold text-zinc-800">Detail Drawer</DrawerTitle>
+        <DrawerTitle className="text-2xl font-bold text-zinc-800">Detail</DrawerTitle>
       </DrawerHeader>
     </>
   );
