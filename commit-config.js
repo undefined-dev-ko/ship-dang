@@ -37,7 +37,7 @@ module.exports = {
         type: 'input',
         name: 'prefix',
         when: (answers) => answers.isPrefix,
-        message: '4️⃣ 접두사를 입력하세요:',
+        message: '4️⃣ 접두사를 입력하세요(괄호 제외):',
         validate: (input) => /^\w+$/.test(input),
       },
       {
