@@ -61,7 +61,7 @@ module.exports = {
           type: 'confirm',
           name: 'confirmCommit',
           message: decoratedMessage,
-          default: false,
+          default: true,
         },
       ]).then((confirmAnswer) => {
         if (confirmAnswer.confirmCommit) {
