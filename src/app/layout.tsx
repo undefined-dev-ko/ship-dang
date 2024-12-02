@@ -23,14 +23,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  drawer,
 }: Readonly<{
   children: React.ReactNode;
+  drawer: React.ReactNode;
 }>) {
   return (
     <html lang="ko" className={`${notoSansKR.variable} ${montserrat.variable} h-full`}>
       <body
-        className={`${notoSansKR.className} ${montserrat.className} h-full bg-neutral-900 text-white antialiased`}>
+        className={`${notoSansKR.className} ${montserrat.className} h-full bg-neutral-900 text-white antialiased`}
+        suppressHydrationWarning>
         {children}
+
+        {drawer}
       </body>
     </html>
   );
