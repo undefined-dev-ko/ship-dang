@@ -55,6 +55,7 @@ const config: Config = {
       fontFamily: {
         notoSansKR: ['var(--font-noto-sans-kr)'],
         montserrat: ['var(--font-montserrat)'],
+        paytoneOne: ['var(--font-paytone-one)'],
       },
       borderRadius: {
         lg: 'var(--radius)',

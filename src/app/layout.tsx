@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
-import { Montserrat, Noto_Sans_KR } from 'next/font/google';
+import { Montserrat, Noto_Sans_KR, Paytone_One } from 'next/font/google';
 import './globals.css';
+
+const paytoneOne = Paytone_One({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400'],
+  variable: '--font-paytone-one',
+});
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin'],
@@ -29,9 +36,11 @@ export default function RootLayout({
   drawer: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${notoSansKR.variable} ${montserrat.variable} h-full`}>
+    <html
+      lang="ko"
+      className={`${notoSansKR.variable} ${montserrat.variable} ${paytoneOne.variable} h-full`}>
       <body
-        className={`${notoSansKR.className} ${montserrat.className} h-full bg-neutral-900 text-white antialiased`}
+        className={`${notoSansKR.className} ${montserrat.className} ${paytoneOne.className} h-full bg-neutral-900 text-white antialiased`}
         suppressHydrationWarning>
         {children}
 
